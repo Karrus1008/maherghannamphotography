@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>music</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFFFFF;
+        }
+        .gallery-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+        }
+        .gallery-video {
+            width: 100%;
+            display: block;
+        }
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            z-index: 1000; /* Ensure buttons are above all other content */
+            transform: translateY(-50%);
+        }
+        .next {
+            right: 20px; /* Adjust the distance from the right */
+            border-radius: 3px 0 0 3px;
+        }
+        .prev {
+            left: 20px; /* Adjust the distance from the left */
+            border-radius: 3px 3px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <video id="galleryVideo" class="gallery-video" controls autoplay>
+         <source src ="Maher finished projects 2023 24/honey white final video.mp4"> </video>
+        <div class="prev" onclick="prevVideo()">&#10094;</div>
+        <div class="next" onclick="nextVideo()">&#10095;</div>
+    </div>
+
+    <script>
+        let currentVideoIndex = 0;
+        const videos = [
+			"Maher finished projects 2023 24/white honey. final video with logo mp4.mp4",
+			"Maher finished projects 2023 24/honey white final video.mp4"
+        ];
+        const galleryVideo = document.getElementById("galleryVideo");
+
+        function showVideo(index) {
+            galleryVideo.src = videos[index];
+            galleryVideo.muted = false; // Ensure video is unmuted
+            galleryVideo.play(); // Ensure video starts playing
+        }
+
+        function prevVideo() {
+            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+            showVideo(currentVideoIndex);
+        }
+
+        function nextVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            showVideo(currentVideoIndex);
+        }
+    </script>
+</body>

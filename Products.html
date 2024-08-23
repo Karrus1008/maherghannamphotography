@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:#FFFFFF;
+        }
+        .gallery-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+			overflow: hidden;
+        }
+        .gallery-img {
+            width: 100%;
+            display: block;
+			
+
+}		
+    .prev,
+    .next {
+            cursor:pointer;
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            z-index: 1000; /* Ensure buttons are above all other content */
+            transform: translateY(-50%);
+			
+        }
+        .next {
+            right: 20px; /* Adjust the distance from the right */
+            border-radius: 3px 0 0 3px;
+        }
+        .prev {
+            left: 20px; /* Adjust the distance from the left */
+            border-radius: 3px 0 0 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <img src="img/IMG_3129-min.jpg" class="gallery-img" id="galleryImage" alt="Photo Gallery">
+        <div class="prev" onclick="prevImage()">&#10094;</div>
+        <div class="next" onclick="nextImage()">&#10095;</div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = [
+            "img/IMG_3148-min.jpg",
+            "img/IMG_3171-min.jpg",
+"img/IMG_3148-min.jpg",
+            "img/white bracelet with a logo-min.jpg",
+			"img/IMG_6265.jpg",
+			"img/IMG_6307.jpg",
+           "img/IMG_6318.jpg",
+			"img/IMG_6342.jpg",
+            "selected photos for image portfolio/necklace flower.jpg",
+			"img/white bracelet with a chain collection-min.jpg",
+			"img/white bracelet with an elephant-min.jpg",
+			"img/white-beige bracelet with a chain-min.jpg",
+			"img/cclctn1.jpg",
+			"img/clctn 4.jpg",
+			"img/clctn 5.jpg",
+			"img/clctn 6_.jpg"
+	
+        ];
+        const galleryImage = document.getElementById("galleryImage");
+
+        function showImage(index) {
+            galleryImage.src = images[index];
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+    </script>
+</body>
+</html>
+

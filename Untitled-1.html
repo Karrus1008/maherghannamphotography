@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo gallery</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:#FFFFFF;
+        }
+        .gallery-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+        }
+        .gallery-img {
+            width: 100%;
+            display: block;
+        }
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            z-index: 1000; /* Ensure buttons are above all other content */
+            transform: translateY(-50%);
+        }
+        .next {
+            right: 20px; /* Adjust the distance from the right */
+            border-radius: 3px 0 0 3px;
+        }
+        .prev {
+            left: 20px; /* Adjust the distance from the left */
+            border-radius: 3px 3px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <img src="selected photos for image portfolio/beige bracelet with a moon.jpg" class="gallery-img" id="galleryImage" alt="Photo Gallery">
+        <div class="prev" onclick="prevImage()">&#10094;</div>
+        <div class="next" onclick="nextImage()">&#10095;</div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = [
+            "selected photos for image portfolio/earings 1 collection.jpg",
+            "selected photos for image portfolio/khaki bracelet with a logo.jpg",
+            "selected photos for image portfolio/white bracelet with a logo.jpg",
+            "selected photos for image portfolio/white ringgg.jpg",
+            "selected photos for image portfolio/bw.jpg",
+            "selected photos for image portfolio/IMG_9922-Edit.jpg",
+			"selected photos for image portfolio/edited1.jpg",
+			"selected photos for image portfolio/IMG_9208-2-Edit.jpg",
+			"selected photos for image portfolio/edited2 2.jpg",
+			"selected photos for image portfolio/edited3.jpg"
+        ];
+        const galleryImage = document.getElementById("galleryImage");
+
+        function showImage(index) {
+            galleryImage.src = images[index];
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+    </script>
+</body>
+</html>
